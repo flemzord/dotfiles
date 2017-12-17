@@ -1,30 +1,47 @@
 [user]
-  name = Jeff Geerling
-  email = geerlingguy@mac.com
+	name = Maxence Maireaux
+	email = maxence@maireaux.fr
+	signingkey = FB9AAFED410282FE
+
 [core]
-  editor = vi
   excludesfile = ~/.gitignore
-  autocrlf = input
+
 [color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
-[web]
-  browser = google-chrome
-[credential]
-  helper = osxkeychain
-[push]
-  default = simple
+	diff = auto
+	status = auto
+	branch = auto
+
 [merge]
-  tool = kdiff3
+	tool = vimdiff
+
+[push]
+	default = simple
+  followTags = true
+
+[alias]
+  prune = fetch --prune
+  cdiff = diff --cached
+  st = status --short
+  log1 = log --all --graph --decorate --oneline --abbrev-commit
+  glog = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset'
+  merge-branch = merge --log --no-commit --no-ff
+  push-this = push origin HEAD
+  fix-submodules = submodule update --recursive --init
+  recursive = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && git $@; done' -"
+  recursive-sh = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && $@; done' -"
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[diff]
+  tool = icdiff
 [difftool]
   prompt = false
-[alias]
-  c = commit
-  ca = commit -a
-  cm = commit -m
-  cam = commit -am
-  d = diff
-  dc = diff --cached
-  l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
+[difftool "icdiff"]
+  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+
+[rerere]
+	enabled = true
