@@ -4,7 +4,7 @@
 	signingkey = FB9AAFED410282FE
 
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/flemzord/.gitignore
 
 [color]
 	diff = auto
