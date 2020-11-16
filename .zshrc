@@ -10,10 +10,9 @@ prompt pure
 ZSH_DISABLE_COMPFIX=true
 HIST_STAMPS="dd/mm/yyyy"
 
-#plugins=(battery git brew docker github node npm osx pip python zsh-completions zsh-syntax-highlighting homestead)
+plugins=(battery git brew docker github node npm osx pip python zsh-completions zsh-syntax-highlighting homestead)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zshrc.local
 
 # Config for NVM
 export NVM_DIR="$HOME/.nvm"
